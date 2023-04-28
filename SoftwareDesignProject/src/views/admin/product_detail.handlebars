@@ -1,0 +1,159 @@
+<body class="sb-nav-fixed">
+  <div id="layoutSidenav_content">
+    <main class="mt-4">
+      <div class="col-6 mx-auto">
+        {{#if message}}
+        {{#with message}}
+        <div class="alert alert-{{alert}} fade show">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{content}}
+        </div>
+        {{/with}}
+        {{/if}}
+      </div>
+      <div class="row mt-4">
+        {{#with book}}
+        <div class="col-12 col-lg-3 overflow-hidden"><!--left col-->
+          <div class="text-center">
+            <img src="{{imageUrl}}" class="img-thumbnail mb-3" alt="avatar">
+            <h6>Upload a different photo...</h6>
+            <form class="form" action="/admin/product/update_image/{{id}}" enctype="multipart/form-data" method="POST">
+              <input type="file" class="text-center center-block file-upload mb-3" id="myFile" name="myFile"
+                multiple="multiple" accept="image/png, image/jpeg" />
+              <input class="btn btn-success" type="submit" value="Upload" />
+            </form>
+          </div>
+          </hr><br>
+
+        </div><!--/col-3-->
+        <div class="col-12 col-lg-9">
+          <form class="form" action="/admin/product/edit" method="post" id="registrationForm">
+            <div class="form-group d-none">
+              <div class="col-xs-6">
+                <input type="number" class="form-control" name="id" id="id" value="{{id}}" readonly>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="title">
+                    <h4>Title</h4>
+                  </label>
+                  <input type="text" class="form-control" name="title" id="title" value="{{title}}"
+                    placeholder="Enter title">
+                </div>
+              </div>
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="authorId">
+                    <h4>Author</h4>
+                  </label>
+                  <select class="form-control" name="authorId" id="authorId">
+                    <option value="{{author.id}}">{{author.name}}</option>
+                    {{#each ../authors}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="publisherId">
+                    <h4>Publisher</h4>
+                  </label>
+                  <select class="form-control" name="publisherId" id="publisherId">
+                    <option value="{{publisher.id}}">{{publisher.name}}</option>
+                    {{#each ../publishers}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="categoryId">
+                    <h4>Category</h4>
+                  </label>
+                  <select class="form-control" name="categoryId" id="categoryId">
+                    <option value="{{category.id}}">{{category.name}}</option>
+                    {{#each ../categories}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="releaseYear">
+                    <h4>Release year</h4>
+                  </label>
+                  <input type="text" class="form-control" name="releaseYear" id="releaseYear"
+                    placeholder="Enter release year" value="{{releaseYear}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="price">
+                    <h4>Price</h4>
+                  </label>
+                  <input type="number" class="form-control" name="price" id="price" placeholder="Enter price"
+                    value="{{price}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="language">
+                    <h4>Language</h4>
+                  </label>
+                  <input type="text" class="form-control" name="language" id="language" placeholder="Enter language"
+                    value="{{language}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="overallRating">
+                    <h4>Rating</h4>
+                  </label>
+                  <input type="number" class="form-control" name="overallRating" id="overallRating"
+                    value="{{overallRating}}" readonly>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="description">
+                    <h4>Description</h4>
+                  </label>
+                  <textarea class="form-control" name="description" id="description" cols="30"
+                    rows="10">{{description}}</textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br>
+                  <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
+                    Save</button>
+                  <button class="btn btn-lg btn-danger" type="submit" form="deleteForm">
+                    Delete</button>
+                </div>
+              </div>
+          </form>
+          <form id="deleteForm" action="/admin/product/delete" method="post">
+            <input type="number" class="d-none" name="id" id="id" value="{{id}}" readonly>
+          </form>
+        </div><!--/tab-content-->
+        {{/with}}
+      </div><!--/col-9-->
+    </main>
+  </div>
+</body>

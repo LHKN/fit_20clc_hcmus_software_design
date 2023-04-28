@@ -1,0 +1,101 @@
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Category list</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Tables</li>
+                </ol>
+                {{#if message}}
+                {{#with message}}
+                <div class="alert alert-{{alert}} fade show">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{content}}
+                </div>
+                {{/with}}
+                {{/if}}
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newProduct">
+                    Add new Category
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="newProduct" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form" action="/admin/table_categories/create" method="post"
+                                    id="addCategoryForm">
+                                    <div class="form-group">
+                                        <div class="col-xs-6">
+                                            <label for="author">
+                                                <h4>Category name</h4>
+                                            </label>
+                                            <input type="text" class="form-control" name="category" id="category"
+                                                placeholder="Enter category's name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-xs-6">
+                                            <label for="author">
+                                                <h4>Image address link</h4>
+                                            </label>
+                                            <input type="text" class="form-control" name="url" id="url"
+                                                placeholder="Enter url" required>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" form="addCategoryForm" class="btn btn-primary">Save
+                                    changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable Account
+                    </div>
+                    <div class="card-body">
+                        <table id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th>Category ID</th>
+                                    <th>Category name</th>
+                                    <th>Category image</th>
+                                    <th>Rename</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each categories}}
+                                <tr href="">
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <th><img src="{{imgUrl}}" width="400" height="300"></th>
+                                    <td>
+                                        <a href="/admin/category_details/{{id}}">
+                                        Go to update site
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    </div>
+</body>

@@ -1,0 +1,111 @@
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+  <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Profile</h1>
+    <div class="d-inline-flex">
+      <p class="m-0"><a href="/customer/home">Home</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">Profile</p>
+    </div>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container bootstrap snippet">
+    <div class="col-6 mx-auto">
+        {{#if message}}
+        {{#with message}}
+        <div class="alert alert-{{alert}} fade show">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{content}}
+        </div>
+        {{/with}}
+        {{/if}}
+    </div>
+    <div class="row">
+        {{#with user}}
+        <div class="col-12 col-lg-3 overflow-hidden"><!--left col-->
+            <div class="text-center">
+                {{#if avatarUrl}}
+                <!-- <div class="avatar" style="background-image: url({{avatarUrl}});"></div> -->
+
+                <img src="{{avatarUrl}}" class="rounded-circle img-thumbnail mb-3 avatar" alt="avatar">
+                {{else}}
+                <!-- <div class="avatar" style="background-image: url("/customers/img/themes/images/profile_pics/user.png");"></div> -->
+                <img src="/customers/img/themes/images/profile_pics/user.png"
+                    class="rounded-circle img-thumbnail mb-3" alt="avatar">
+                {{/if}}
+                <h6>Upload a different photo...</h6>
+                <form class="form" action="/customer/user/updateAvatar" enctype="multipart/form-data" method="POST">
+                    <input type="file" class="text-center center-block file-upload mb-3" id="myFile" name="myFile"
+                        multiple="multiple" />
+                    <input class="btn btn-success" type="submit" value="Upload" />
+                </form>
+            </div>
+            </hr><br>
+
+        </div><!--/col-3-->
+        <div class="col-12 col-lg-9">
+            <form class="form" action="/customer/user/edit" method="post" id="registrationForm">
+                <div class="form-group d-none">
+
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" name="id" id="id" value="{{id}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="email">
+                                <h4>Email</h4>
+                            </label>
+                            <input type="text" class="form-control" name="email" id="email" value="{{email}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="name">
+                                <h4>Full name</h4>
+                            </label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{name}}"
+                                placeholder="Enter your name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="dob">
+                                <h4>Date of birth</h4>
+                            </label>
+                            <input type="date" class="form-control" name="dob" id="dob" value="{{dob}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="phone">
+                                <h4>Phone</h4>
+                            </label>
+                            <input type="text" class="form-control" name="phone" id="phone"
+                                placeholder="Enter your phone number" value="{{phone}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <br>
+                            <button class="btn btn-lg btn-success" type="submit"><i
+                                    class="glyphicon glyphicon-ok-sign"></i>
+                                Save</button>
+                            <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>
+                                Reset</button>
+                        </div>
+                    </div>
+            </form>
+        </div><!--/tab-content-->
+
+        {{/with}}
+    </div><!--/col-9-->
+</div><!--/row-->

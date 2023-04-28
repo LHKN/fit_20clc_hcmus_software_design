@@ -1,0 +1,139 @@
+<!-- Navbar Start -->
+<div id="main-theme" class="container-fluid mb-5 mt-2">
+    <div class="row border-bottom px-xl-5">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="/customer/home" class="text-decoration-none d-block mr-4">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">B</span>Shopper</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <form class="row no-gutters mt-3 d-lg-none" method="get" action="/customer/products">
+                            <div class="input-group col-5">
+                                <input type="text" class="form-control" name="name" placeholder="Search">
+                            </div>
+                            <div class="input-group col-7">
+                                <select class="custom-select" name="cat">
+                                    <option value="0">All</option>
+                                    {{#each categories}}
+                                    <option value="{{id}}">{{name}}</option>
+                                    {{/each}}
+                                </select>
+                                <select class="custom-select" name="sort">
+                                    <option value="">None</option>
+                                    <option value="asc">A-Z</option>
+                                    <option value="desc">Z-A</option>
+                                    <option value="price">Lowest price first</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-transparent text-primary">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                        <a href="/customer/home" class="nav-item nav-link">Home</a>
+                        <a href="/customer/products?name=&cat=0&sort=&from=&to=&page="
+                            class="nav-item nav-link">Products</a>
+                        <div class="nav-item dropdown d-block d-lg-none">
+                            <button class="btn btn-default dropdown-toggle px-0 text-dark" data-toggle="dropdown">
+                                Account
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                {{#if user}}
+                                <a href="/customer/user/profile" class="dropdown-item">Profile</a>
+                                <a href="/customer/user/password" class="dropdown-item">Change password</a>
+                                <a href="/customer/logout" class="dropdown-item">Logout</a>
+                                {{else}}
+                                <a href="/customer/login" class="dropdown-item">Login</a>
+                                <a href="/customer/register" class="dropdown-item">Register</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="text-left text-lg-right d-flex align-items-center d-lg-none">
+                            <a href="/customer/orderstatus" class="btn border">
+                                <i class="fas fa-receipt text-primary"></i>
+                                <span class="badge">{{orders.length}}</span>
+                            </a>
+                            <a href="/customer/cart" class="btn border">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span id="cartQuantity" class="badge">{{cartQuantity}}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="row no-gutters m-auto d-none d-lg-flex" method="get" action="/customer/products">
+                        <div class="input-group col-6">
+                            <input type="text" class="form-control" name="name" placeholder="Search for products">
+                        </div>
+                        <div class="input-group col-6">
+                            <select class="custom-select" name="cat">
+                                <option value="0">All</option>
+                                {{#each categories}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <select class="custom-select" name="sort">
+                                <option value="">None</option>
+                                <option value="asc">A-Z</option>
+                                <option value="desc">Z-A</option>
+                                <option value="price">Lowest price first</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="input-group-text bg-transparent text-primary btn">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <input type="hidden" value="" name="from">
+                            <input type="hidden" value="" name="to">
+                            <input type="hidden" value="" name="page">
+                        </div>
+                    </form>
+
+                    <div class="navbar-nav ml-auto py-0 d-none d-lg-flex">
+                        <div class="text-left text-lg-right d-flex align-items-center">
+                            <a href="/customer/orderstatus" class="btn border">
+                                <i class="fas fa-receipt text-primary"></i>
+                                <span class="badge">{{orders.length}}</span>
+                            </a>
+                            <a href="/customer/cart" class="btn border">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span id="cartQuantity" class="badge">{{cartQuantity}}</span>
+                            </a>
+                        </div>
+                        {{#if user}}
+                        {{#with user}}
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1"
+                                data-toggle="dropdown">
+                                {{#if avatarUrl}}
+                                <img class="img-fluid rounded-circle" width="40" height="40" src="{{avatarUrl}}">
+                                {{else}}
+                                <img class="img-fluid rounded-circle" width="40" height="40"
+                                    src="/customers/img/themes/images/profile_pics/user.png">
+                                {{/if}}
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right rounded-0 m-0">
+                                <a href="/customer/user/profile" class="dropdown-item">Profile</a>
+                                <a href="/customer/user/password" class="dropdown-item">Change password</a>
+                                <a href="/customer/logout" class="dropdown-item">Logout</a>
+                            </div>
+                        </div>
+                        {{/with}}
+                        {{else}}
+                        <a href="/customer/login" class="nav-item nav-link">Login</a>
+                        <a href="/customer/register" class="nav-item nav-link">Register</a>
+                        {{/if}}
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->

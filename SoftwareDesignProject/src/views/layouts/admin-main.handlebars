@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    {{!-- <link rel="stylesheet" href="/customers/css/style.css"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/admin/css/app.css">
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <div class="app">
+        {{>admin-header}}
+            <div class="container">
+                <div id="layoutSidenav">
+                    <div id="layoutSidenav_nav">
+                        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                            <div class="sb-sidenav-menu">
+                                <div class="nav">
+                                    <div class="sb-sidenav-menu-heading">Core</div>
+                                    <a class="nav-link" href="/admin/home">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        Dashboard
+                                    </a>
+                                    <a class="nav-link" href="/admin/update">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        Update profile
+                                    </a>
+                                    <a class="nav-link" href="/admin/banned">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        Ban/Unban Account
+                                    </a>
+                                    
+                                    <div class="sb-sidenav-menu-heading">Interface</div>
+                                    <a class="nav-link" href="/admin/table_account">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        Accounts
+                                    </a>                        
+                                    <a class="nav-link" href="/admin/table_product">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        Products
+                                    </a>
+                                    <div class="sb-sidenav-menu-heading">Addons</div>
+                                    <a class="nav-link" href="/admin/listorders">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                        Customer-orders
+                                    </a>
+                                    <a class="nav-link" href="/admin/chart">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                        Report
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="sb-sidenav-footer">
+                                <div class="small">Logged in as:</div>
+                                Start Bootstrap
+                            </div>
+                        </nav>
+                    </div>
+                    {{{body}}}
+                </div>                
+            </div>
+        <br><br><br>
+        {{>admin-footer}}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+		integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="/admin/js/chart-area-demo.js"></script>
+    <script src="/admin/js/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="/admin/js/datatables-simple-demo.js"></script>
+    <script src="/admin/js/chart-pie-demo.js"></script>
+    <script src="/admin/js/datatables-demo.js"></script>
+    <script>
+        function markPending(id) {
+            alert(id);
+            $.ajax({
+                url: '/admin/orderdetails/mark-pending',
+                method: 'post',
+                data: { id },
+                dataType: 'json',
+                success: function (data) {
+                    alert("Mark Pending succesfully")
+                    $.get(location.href, function (data) {
+						$('#status').empty().append($(data).find('#status').children());
+					});
+                },
+                error: function (data) {
+                    alert('Some error occur')
+                }
+            })
+        }
+        function markShipping(id) {
+            alert(id);
+            $.ajax({
+                url: '/admin/orderdetails/mark-shipping',
+                method: 'post',
+                data: { id },
+                dataType: 'json',
+                success: function (data) {
+                    alert("Mark Shipping succesfully")
+                    $.get(location.href, function (data) {
+						$('#status').empty().append($(data).find('#status').children());
+					});
+                },
+                error: function (data) {
+                    alert('Some error occur')
+                }
+            })
+        }
+        function markDone(id) {
+            alert(id);
+            $.ajax({
+                url: '/admin/orderdetails/mark-done',
+                method: 'post',
+                data: { id },
+                dataType: 'json',
+                success: function (data) {
+                    alert("Mark Done succesfully")
+                    $.get(location.href, function (data) {
+						$('#status').empty().append($(data).find('#status').children());
+					});
+                },
+                error: function (data) {
+                    alert('Some error occur')
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

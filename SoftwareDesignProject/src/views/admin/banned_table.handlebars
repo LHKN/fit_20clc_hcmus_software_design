@@ -1,0 +1,59 @@
+<body class="sb-nav-fixed">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Banned Account Tables</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Tables</li>
+                    </ol>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            DataTable Account Banned
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>                                
+                                        <th>Date of birth</th>
+                                        <th>Phone</th>
+                                        <th>IsAdmin</th>
+                                        <th>Email</th>
+                                        <th>IsBanned</th>
+                                        <th>Check details</th>   
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Date of birth</th>
+                                        <th>Phone</th>
+                                        <th>IsAdmin</th>
+                                        <th>Email</th>      
+                                        <th>IsBanned</th>                             
+                                        <th>Check details</th>             
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {{#each order}}
+                                    <tr href="">
+                                        <td>{{name}}</td>
+                                        <td>{{dob}}</td>
+                                        <td>{{phone}}</td>
+                                        <td>{{isAdmin}}</td>
+                                        <td>{{email}}</td>
+                                        <td>{{isBanned}}</td>
+                                        <td><a href="/admin/bandetail/{{id}}">Ban/Unban</a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>

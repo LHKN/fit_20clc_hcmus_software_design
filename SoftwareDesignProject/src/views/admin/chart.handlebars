@@ -1,0 +1,135 @@
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Charts</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="/admin/home">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Charts</li>
+                    </ol>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            Chart.js is a third party plugin that is used to generate the charts in this template. The
+                            charts below have been customized - for further customization options, please visit the
+                            official
+                            <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
+                            .
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area me-1"></i>
+                            Revenue by a week
+                        </div>
+                        <body>
+                            <div id="chartContainer" style="height: 300px; width: 100%;">
+                            </div>
+                        </body>
+                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                            <script>
+                                
+                                var xValues = ["3 Months ago", "2 Months ago", "Last Month", "Current Month"];
+                                var yValues = [{{revenue.curMonth4}}, {{revenue.curMonth3}}, {{revenue.curMonth2}}, {{revenue.curMonth1}}];
+                                var barColors = ["red", "green", "blue", "orange"];
+
+                                new Chart("myChart", {
+                                    type: "bar",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                            backgroundColor: barColors,
+                                            data: yValues
+                                        }]
+                                    },
+                                    options: {
+                                        legend: { display: false },
+                                        title: {
+                                            display: true,
+                                            text: "Revenue by recent month (Total: {{totalRevenueMonth}})"
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card mb-4">
+                                <canvas id="pieChart" style="width:100%;max-width:600px"></canvas>
+                                <script>
+                                    var xValues = ["{{revenue.book1}}", "{{revenue.book2}}", "{{revenue.book3}}", "{{revenue.book4}}", "{{revenue.book5}}"];
+                                    var yValues = [{{revenue.quantity1}}, {{revenue.quantity2}}, {{revenue.quantity3}}, {{revenue.quantity4}}, {{revenue.quantity5}}];
+                                    var barColors = [
+                                        "#b91d47",
+                                        "#00aba9",
+                                        "#2b5797",
+                                        "#e8c3b9"
+                                    ];
+                                    new Chart("pieChart", {
+                                        type: "pie",
+                                        data: {
+                                            labels: xValues,
+                                            datasets: [{
+                                                backgroundColor: barColors,
+                                                data: yValues
+                                            }]
+                                        },
+                                        options: {
+                                            title: {
+                                                display: true,
+                                                text: "World Wide Wine Production 2018"
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <head>
+        <script type="text/javascript">
+            const curDate = new Date();
+            const curDate1 = new Date(new Date().setDate(new Date().getDate() - 1));
+            const curDate2 = new Date(new Date().setDate(new Date().getDate() - 2));
+            const curDate3 = new Date(new Date().setDate(new Date().getDate() - 3));
+            const curDate4 = new Date(new Date().setDate(new Date().getDate() - 4));
+            const curDate5 = new Date(new Date().setDate(new Date().getDate() - 5));
+            const curDate6 = new Date(new Date().setDate(new Date().getDate() - 6));
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer",
+                    {
+
+                        title: {
+                            text: "Revenue - per days (Total: {{totalRevenue}} vnđ)"
+                        },
+                        data: [
+                            {
+                                type: "line",
+
+                                dataPoints: [
+                                    { x: curDate, y: {{revenue.cur}} },
+                                    { x: curDate1, y: {{revenue.cur1}} },
+                                    { x: curDate2, y: {{revenue.cur2}} },
+                                    { x: curDate3, y: {{revenue.cur3}} },
+                                    { x: curDate4, y: {{revenue.cur4}} },
+                                    { x: curDate5, y: {{revenue.cur5}} },
+                                    { x: curDate6, y: {{revenue.cur6}} }
+                                ]
+                            }
+                        ]
+                    });
+                chart.render();
+            }
+        </script>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </head>
+</body>

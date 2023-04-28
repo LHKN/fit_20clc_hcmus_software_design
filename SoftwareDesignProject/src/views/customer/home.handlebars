@@ -1,0 +1,113 @@
+<div id="header-carousel" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active" style="height: 410px;">
+			<img class="img-fluid"
+				src="https://wallpapercave.com/wp/wp7223967.png"
+				alt="Image">
+			<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+				<div class="p-3" style="max-width: 700px;">
+					<h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order
+					</h4>
+					<h3 class="display-4 text-white font-weight-semi-bold mb-4">All book categories</h3>
+					<a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item" style="height: 410px;">
+			<img class="img-fluid"
+				src="https://images2.alphacoders.com/111/1111604.png" alt="Image">
+			<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+				<div class="p-3" style="max-width: 700px;">
+					<h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order
+					</h4>
+					<h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
+					<a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item" style="height: 410px;">
+			<img class="img-fluid"
+				src="https://wallpaperaccess.com/full/3896663.jpg" alt="Image">
+			<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+				<div class="p-3" style="max-width: 700px;">
+					<h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order
+					</h4>
+					<h3 class="display-4 text-white font-weight-semi-bold mb-4">Easy to buy</h3>
+					<a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item" style="height: 410px;">
+			<img class="img-fluid"
+				src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/97010d35-56d4-4abb-b3d3-b91bb1c69ce2/det6mms-ec6b435a-2d8a-4125-94ae-e195625bd3df.jpg/v1/fill/w_1171,h_682,q_70,strp/ahegao_wallpaper_by_stellastargirl_det6mms-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzQ2IiwicGF0aCI6IlwvZlwvOTcwMTBkMzUtNTZkNC00YWJiLWIzZDMtYjkxYmIxYzY5Y2UyXC9kZXQ2bW1zLWVjNmI0MzVhLTJkOGEtNDEyNS05NGFlLWUxOTU2MjViZDNkZi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.hkChIaLd9Fzf07BbdIXHgf6J-Yqup-F9YJ2S_bLy1eU" alt="Image">
+			<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+				<div class="p-3" style="max-width: 700px;">
+					<h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order
+					</h4>
+					<h3 class="display-4 text-white font-weight-semi-bold mb-4">Available in Vietnam</h3>
+					<a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+		<div class="btn btn-dark" style="width: 45px; height: 45px;">
+			<span class="carousel-control-prev-icon mb-n2"></span>
+		</div>
+	</a>
+	<a class="carousel-control-next" href="#header-carousel" data-slide="next">
+		<div class="btn btn-dark" style="width: 45px; height: 45px;">
+			<span class="carousel-control-next-icon mb-n2"></span>
+		</div>
+	</a>
+</div>
+<!-- Categories Start -->
+<div class="container-fluid pt-5">
+	<div class="row px-xl-5 pb-3">
+		{{#each categories}}
+		<div class="col-lg-4 col-md-6 pb-1 mb-3 w-100">
+			<div class="card hovereffect">
+				<img class="img-fluid" src="{{imgUrl}}" alt="">
+				<div class="overlay">
+					<a href="/customer/products?name=&cat={{id}}&sort=&from=&to=&page=" class="info">{{name}}</a>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+<!-- Categories End -->
+
+<!-- Products Start -->
+<div class="container-fluid pt-5">
+	<div class="text-center mb-4">
+		<h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
+	</div>
+	<div class="row px-xl-3 pb-3 justify-content-around">
+		{{#each latestBooks}}
+		<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+			<div class="card product-item border-0 mb-4">
+				<div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+					<img class="img-fluid w-100" src="{{imageUrl}}" alt="">
+				</div>
+				<div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+					<h6 class="text-truncate mb-3">{{title}}</h6>
+					<div class="d-flex justify-content-center">
+						<h6>{{price}} &#8363;</h6>
+						<!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
+					</div>
+				</div>
+				<div class="card-footer d-flex justify-content-between bg-light border">
+					<a href="/customer/product_details/{{id}}" class="btn btn-sm text-dark p-0"><i
+							class="fas fa-eye text-primary mr-1"></i>View
+						Detail</a>
+					<button class="btn btn-sm text-dark p-0 submitBtn" value="{{id}}" onclick="addPro(this.value)">
+						<i class="fas fa-shopping-cart text-primary mr-1" name="book_id" value="{{id}}"></i>Add To Cart
+					</button>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+<!-- Products End -->

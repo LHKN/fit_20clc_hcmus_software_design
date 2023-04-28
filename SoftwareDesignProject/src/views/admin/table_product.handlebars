@@ -1,0 +1,162 @@
+<body class="sb-nav-fixed">
+	<div id="layoutSidenav_content">
+		<main>
+			<div class="container-fluid px-4">
+				<h1 class="mt-4">Product list</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
+					<li class="breadcrumb-item active">Tables</li>
+				</ol>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newProduct">
+					Add new Product
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="newProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form class="form" action="/admin/product/create" method="post" id="addProductForm">
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="title">
+												<h4>Title</h4>
+											</label>
+											<input type="text" class="form-control" name="title" id="title" required>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="authorId">
+												<h4>Author</h4>
+											</label>
+											<select class="form-control" name="authorId" id="authorId" required>
+												{{#each authors}}
+												<option value="{{id}}">{{name}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="publisherId">
+												<h4>Publisher</h4>
+											</label>
+											<select class="form-control" name="publisherId" id="publisherId" required>
+												{{#each publishers}}
+												<option value="{{id}}">{{name}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="categoryId">
+												<h4>Category</h4>
+											</label>
+											<select class="form-control" name="categoryId" id="categoryId" required>
+												{{#each categories}}
+												<option value="{{id}}">{{name}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="releaseYear">
+												<h4>Release year</h4>
+											</label>
+											<input type="text" class="form-control" name="releaseYear" id="releaseYear"
+												placeholder="Enter release year" required>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="price">
+												<h4>Price</h4>
+											</label>
+											<input type="number" class="form-control" name="price" id="price" placeholder="Enter price" required>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="language">
+												<h4>Language</h4>
+											</label>
+											<input type="text" class="form-control" name="language" id="language"
+												placeholder="Enter language" required>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-xs-6">
+											<label for="description">
+												<h4>Description</h4>
+											</label>
+											<textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" form="addProductForm" class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-table me-1"></i>
+						DataTable Account
+					</div>
+					<div class="card-body">
+						<table id="datatablesSimple">
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Release Year</th>
+									<th>Price</th>
+									<th>Rating</th>
+									<th>Language</th>
+									<th>CreatedAt</th>
+									<th>UpdatedAt</th>
+									<th>Detail</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each books}}
+								<tr href="">
+									<td>{{title}}</td>
+									<td>{{releaseYear}}</td>
+									<td>{{price}}</td>
+									<td>{{overallRating}}</td>
+									<td>{{language}}</td>
+									<td>{{createdAt}}</td>
+									<td>{{updatedAt}}</td>
+									<td><a href="/admin/product/{{id}}">Check Details</a></td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+</body>
