@@ -17,6 +17,7 @@ router.get('/', async (req, res, next) => {
             orderList.push(obj);
         }
         const shippingOrder = await orderService.getShippingOrder(user.id);
+        
         for (var i = 0; i < shippingOrder.length; i++) {
             const obj = shippingOrder[i];
             obj["progress"] = 50;
@@ -28,7 +29,7 @@ router.get('/', async (req, res, next) => {
             obj["progress"] = 100;
             orderList.push(obj);
         }
-
+        
         res.render('customer/orderstatus', { orderList, user, cartQuantity, orders: orderList });
 
     } catch (error) {

@@ -29,7 +29,7 @@ const orderService = {
                     totalPrice: subTotal,
                     note: null,
                     createdBy: userId,
-
+                    status: 1
                 })
                 resolve(order);
             }

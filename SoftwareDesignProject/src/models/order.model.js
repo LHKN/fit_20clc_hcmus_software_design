@@ -38,7 +38,8 @@ const Order = db.define('Order',
         },
         status: {
             field: 'status',
-            type: DataTypes.SMALLINT
+            type: DataTypes.SMALLINT,
+            defaultValue: 1
         }
     },
     {
