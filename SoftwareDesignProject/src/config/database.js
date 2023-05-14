@@ -2,8 +2,9 @@ const Sequelize = require('sequelize');
 const operatorsAliases = require('./operatorAlias');
 
 module.exports = new Sequelize(
-    'bookstore', 'root', 'root', {
+    'mangabookstore', 'mjkundta', 'Toan123456', {
         dialect:'mysql',
+        host: 'www.db4free.net',
         operatorsAliases: operatorsAliases
     }
 );
