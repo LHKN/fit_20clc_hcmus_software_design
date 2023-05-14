@@ -159,8 +159,8 @@ const orderService = {
                     attribute: ['total_price'],
                     where: {
                         $and: [
-                            sequelize.where(sequelize.fn('date_trunc', 'day', sequelize.col('created_at')), '>=', fromDate),
-                            sequelize.where(sequelize.fn('date_trunc', 'day', sequelize.col('created_at')), '<=', toDate),
+                            sequelize.where(sequelize.fn('DATE', sequelize.col('created_at')), '>=', fromDate.toISOString().slice(0, 10)),
+                            sequelize.where(sequelize.fn('DATE', sequelize.col('created_at')), '<=', toDate.toISOString().slice(0, 10)),
                         ],
                         status: 3
                     },
