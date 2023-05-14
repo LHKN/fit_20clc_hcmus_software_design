@@ -78,6 +78,9 @@ router.get('/', async (req, res, next) => {
     });
     revenue["cur6"] = total;
     totalRevenue+=total;
+    // End Day and Week of Revenue
+
+    // End Month of Revenue
 
     const curRevenueMonth = await orderService.getOrderByMonth(curMonth.getMonth() + 1);
     const curRevenueMonth1 = await orderService.getOrderByMonth(curMonth1.getMonth() + 1);
@@ -130,6 +133,7 @@ router.get('/', async (req, res, next) => {
     revenue["quantity3"] = listBook[2]["SUM(quantity)"];
     revenue["quantity4"] = listBook[3]["SUM(quantity)"];
     revenue["quantity5"] = listBook[4]["SUM(quantity)"];
+    
 
     res.render('admin/chart',   {layout: 'admin-main', 
                                 revenue, 

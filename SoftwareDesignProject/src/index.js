@@ -8,8 +8,7 @@ const { mainModule } = require('process');
 const config = require('./config');
 const db = require('./config/database');
 const cookieParser = require('cookie-parser');
-const ban = require('./app/controllers/admin/ban_unban');
-const flash = require('connect-flash');
+const ban = require('./app/controllers/admin/ban_unban')
 
 
 const helper = hbs.create({});
@@ -40,7 +39,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 // http logger
 app.use(morgan('dev'));
-app.use(flash());
 
 // template engine
 app.set('view engine', 'handlebars');
