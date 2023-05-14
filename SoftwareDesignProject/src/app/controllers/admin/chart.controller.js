@@ -78,9 +78,6 @@ router.get('/', async (req, res, next) => {
     });
     revenue["cur6"] = total;
     totalRevenue+=total;
-    // End Day and Week of Revenue
-
-    // End Month of Revenue
 
     const curRevenueMonth = await orderService.getOrderByMonth(curMonth.getMonth() + 1);
     const curRevenueMonth1 = await orderService.getOrderByMonth(curMonth1.getMonth() + 1);
@@ -118,9 +115,6 @@ router.get('/', async (req, res, next) => {
     totalRevenueMonth+=totalMonth;
     totalMonth=0;
 
-    //const [results, metadata] = await Sequelize.query("SELECT title book_id, SUM(quantity) FROM order_item_lists join books on order_item_lists.book_id = books.id GROUP BY book_id, title order by SUM(quantity) desc limit 5");
-    //const listBook = await Sequelize.query(`SELECT title book_id, SUM(quantity) FROM order_item_lists join books on order_item_lists.book_id = books.id GROUP BY book_id, title order by SUM(quantity) desc limit 5`);
-
     const listBookRaw = await orderItemListService.getTop4();
     
     listBook = listBookRaw[0];
@@ -136,10 +130,6 @@ router.get('/', async (req, res, next) => {
     revenue["quantity3"] = listBook[2]["SUM(quantity)"];
     revenue["quantity4"] = listBook[3]["SUM(quantity)"];
     revenue["quantity5"] = listBook[4]["SUM(quantity)"];
-
-    console.log(revenue);
-    console.log("---------------------------");
-    console.log(listBook);
 
     res.render('admin/chart',   {layout: 'admin-main', 
                                 revenue, 

@@ -53,8 +53,9 @@ router.post('/create_order', async (req, res) => {
             obj = listProductsJson[i];
             const newItemList = await orderItemListService.createNewOne(newOrder.id, obj.quantity, obj.book_id)
         }
-        const deletedCart = cartService.deleteCart(user.id)
-        res.redirect('/');
+        const deletedCart = cartService.deleteCart(user.id);
+        const message = "Ordered Successful";
+        res.render('customer/home', {message});
     }
     catch (error) {
         console.log(error);
