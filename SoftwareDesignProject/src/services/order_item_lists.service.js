@@ -40,7 +40,7 @@ const orderItemListService = {
     getTop4: ()=>{
         return new Promise(async (resolve, reject) => {
             try {
-                const order = await db.query("SELECT title book_id, SUM(quantity) FROM order_item_lists join books on order_item_lists.book_id = books.id GROUP BY book_id, title order by SUM(quantity) desc limit 5", {raw: true});
+                const order = await db.query("SELECT title book_id, SUM(quantity) FROM bookstore.order_item_lists join bookstore.books on bookstore.order_item_lists.book_id = books.id GROUP BY book_id, title order by SUM(quantity) desc limit 5", {raw: true});
                 
                 resolve(order);
             }

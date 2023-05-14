@@ -131,13 +131,15 @@ router.get('/', async (req, res, next) => {
     revenue["book4"] = listBook[3].book_id;
     revenue["book5"] = listBook[4].book_id;
 
-    revenue["quantity1"] = listBook[0].sum;
-    revenue["quantity2"] = listBook[1].sum;
-    revenue["quantity3"] = listBook[2].sum;
-    revenue["quantity4"] = listBook[3].sum;
-    revenue["quantity5"] = listBook[4].sum;
+    revenue["quantity1"] = listBook[0]["SUM(quantity)"];
+    revenue["quantity2"] = listBook[1]["SUM(quantity)"];
+    revenue["quantity3"] = listBook[2]["SUM(quantity)"];
+    revenue["quantity4"] = listBook[3]["SUM(quantity)"];
+    revenue["quantity5"] = listBook[4]["SUM(quantity)"];
 
     console.log(revenue);
+    console.log("---------------------------");
+    console.log(listBook);
 
     res.render('admin/chart',   {layout: 'admin-main', 
                                 revenue, 
